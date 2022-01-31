@@ -1,0 +1,8 @@
+{
+  "short_name": "MealDB App",
+  "name": "MealDB App",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#13ecab",
+  "background_color": "#ffffff"
+}
