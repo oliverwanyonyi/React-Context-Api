@@ -16,8 +16,7 @@ a simple app that consumes data from mealdb api
 - search meal by name.
 - view more information about a meal in details page.
 - add and remove meals in favorite list.
-- local storage for the persistence of the items added to favorite list.
-- being added and removed to list
+- local storage for the persistence of the items added to list.
 
 ### Getting started
 
