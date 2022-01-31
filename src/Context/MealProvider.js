@@ -14,7 +14,7 @@ const fetchFavList = () => {
 const MealProvider = ({ children }) => {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [search, setSearch] = useState("pizza");
+  const [search, setSearch] = useState("");
   const [favouriteList, setFavouriteList] = useState(fetchFavList());
 
   useEffect(() => {

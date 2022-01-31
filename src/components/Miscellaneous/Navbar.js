@@ -9,55 +9,41 @@ import { MealState } from "../../Context/MealProvider";
 import { Icon, Text } from "@chakra-ui/react";
 const Navbar = ({ onOpen }) => {
   const { search, setSearch } = MealState();
-  const [mobile, setMobile] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+
   const inputRef = React.useRef();
   useEffect(() => {
     inputRef.current.focus();
   }, []);
-  const getInnerWidth = () => {
-    setWidth(window.innerWidth);
-  };
 
-  useEffect(() => {
-    window.addEventListener("resize", getInnerWidth);
-    return () => {
-      window.removeEventListener("resize", getInnerWidth);
-    };
-  }, []);
-
-  const getDeviceType = () => {
-    if (width < 600) {
-      setMobile(true);
-    } else {
-      setMobile(false);
-    }
-  };
-  useEffect(() => {
-    getDeviceType();
-  }, [width]);
-  console.log(width);
   return (
     <>
-      <Box
-        d="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        p="8px 40px 8px 40px"
-        bg="#13ecab"
-        w="100%"
-        shadow="2xl"
-        position="fixed"
-        top="0"
-        right="0"
-      >
-        <Text
-          fontSize={{ base: "15", md: "20" }}
-          color="white"
-          fontWeight="500"
-        >
-          MealDbApi
-        </Text>
+      <Box bg="#13ecab" p="8px 40px 8px 40px" w="100%">
+        <Box d="flex" justifyContent="space-between" mb="3" alignItems="center">
+          <Text
+            fontSize={{ base: "15", md: "20" }}
+            color="white"
+            fontWeight="500"
+          >
+            MealDbApi
+          </Text>
+
+          <Box
+            as="button"
+            p={2}
+            d="flex"
+            alignItems="center"
+            color="#13ecab"
+            fontWeight="300"
+            borderRadius="md"
+            onClick={onOpen}
+            bg="#fefefe"
+            _hover={{
+              opacity: 0.7,
+            }}
+          >
+            <Icon as={GrFavorite} me="2" /> Favorite
+          </Box>
+        </Box>
         <Container maxWidth={{ base: "sm", md: "md" }}>
           <FormControl>
             <InputGroup size="md">
@@ -66,6 +52,7 @@ const Navbar = ({ onOpen }) => {
                 color="black"
                 variant="flushed"
                 focusBorderColor="none"
+                borderRadius="md"
                 bg="#ffffff"
                 ref={inputRef}
                 value={search}
@@ -84,24 +71,6 @@ const Navbar = ({ onOpen }) => {
             </InputGroup>
           </FormControl>
         </Container>
-
-        <Box
-          as="button"
-          p={2}
-          d="flex"
-          alignItems="center"
-          color="#13ecab"
-          fontWeight="300"
-          borderRadius="md"
-          onClick={onOpen}
-          bg="#fefefe"
-          _hover={{
-            opacity: 0.7,
-          }}
-        >
-          <Icon as={GrFavorite} me={mobile ? "0" : "2"} />{" "}
-          {mobile ? "" : "Favorite"}
-        </Box>
       </Box>
     </>
   );

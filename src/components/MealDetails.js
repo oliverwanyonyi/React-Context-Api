@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { MealState } from "../Context/MealProvider";
 import { useParams } from "react-router";
-import { BsCheck2Circle } from "react-icons/bs";
+import { MdCheckCircle } from "react-icons/md";
 import TagListItem from "./Miscellaneous/TagListItem";
 import { ChevronLeftIcon, SmallAddIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
@@ -155,8 +155,8 @@ const MealDetails = () => {
           <Flex
             justify="center"
             alignItems="center"
-            py={{ base: 4, md: 10 }}
-            px={{ base: 4, md: 10 }}
+            py={{ base: 5, md: 10 }}
+            px={{ base: 3, md: 10 }}
             minHeight="100vh"
             direction={{ base: "column", md: "row" }}
           >
@@ -190,16 +190,16 @@ const MealDetails = () => {
                 <Heading my="3" fontSize="md" fontWeight="normal">
                   {meal && "Ingredients :"}
                 </Heading>
-                <List d="flex" flexWrap="wrap" alignItems="center">
+                <List d="flex" alignItems="center" flexWrap="wrap">
                   {meal.ingredients &&
                     meal.ingredients.map((ingredient, i) => {
                       if (ingredient)
                         return (
-                          <ListItem m="2" key={i}>
+                          <ListItem key={i} m="2">
                             <ListIcon
-                              as={BsCheck2Circle}
-                              fontSize="16px"
-                              color="green.900"
+                              as={MdCheckCircle}
+                              verticalAlign="middle"
+                              color="teal"
                             />
                             {ingredient}
                           </ListItem>
